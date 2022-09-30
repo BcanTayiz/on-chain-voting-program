@@ -1,15 +1,12 @@
 import * as anchor from "@project-serum/anchor";
 import { Program } from "@project-serum/anchor";
 import { OnchainVoting } from "../target/types/onchain_voting";
-const solanaWeb3 = require("@solana/web3.js");
-const solanatoken = require("@solana/spl-token");
 
 
 describe("onchain-voting", () => {
   anchor.setProvider(anchor.AnchorProvider.env());
   const program = anchor.workspace.OnchainVoting as Program<OnchainVoting>;
   let voteBank = anchor.web3.Keypair.generate();
-
 
 
   it("Creating vote bank for public to vote", async () => {

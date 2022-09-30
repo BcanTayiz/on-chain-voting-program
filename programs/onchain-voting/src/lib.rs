@@ -1,5 +1,7 @@
 use anchor_lang::prelude::*;
 declare_id!("FUCKUQXmg4i4ken7xeYcNLDFtH5NTfs5fZiMahVrNgU6");
+
+
 #[program]
 pub mod onchain_voting {
     use super::*;
@@ -14,11 +16,11 @@ pub mod onchain_voting {
         match vote_type {
             VoteType::GM => {
                 msg!("Voted for GM 🤝");
-                ctx.accounts.vote_account.gm += 1; 
+                ctx.accounts.vote_account.gm += 1;
             },
             VoteType::GN => {
                 msg!("Voted for GN 🤞");
-                ctx.accounts.vote_account.gn += 1; 
+                ctx.accounts.vote_account.gn += 1;
             },
         };
         Ok(())
@@ -31,10 +33,10 @@ pub mod onchain_voting {
 pub struct InitVote<'info> {
     // Making a global account for storing votes
     #[account(
-        init, 
-        payer = signer, 
-        space = 8 + 1 + 8 + 8, 
-    )] 
+        init,
+        payer = signer,
+        space = 8 + 1 + 8 + 8,
+    )]
     pub vote_account: Account<'info, VoteBank>,
     #[account(mut)]
     pub signer: Signer<'info>,
